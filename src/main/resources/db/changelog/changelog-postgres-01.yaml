@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 100
+      author: bart
+      dbms: PostgreSQL
+      comment: Create ORDER
+      changes:
+        - createTable:
+            schemaName: PUBLIC
+            tableName: ORDER
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: NAAM
+                  type: text
+              - column:
+                  name: DESCRIPTION
+                  type: text
+              - column:
+                  name: PAYMENT
+                  type: text
+              - column:
+                  name: TOTALPRICE
+                  type: BIGINT
+        - rollback:
+            dropTable:
+              - tableName: ORDER
